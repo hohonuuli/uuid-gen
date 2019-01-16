@@ -43,7 +43,7 @@ UUID uuidC = UUIDs.counterUuid()
     <dependency>
      <groupId>org.mbari.bobd</groupId>
       <artifactId>uuid-gen</artifactId>
-      <version>0.1</version>
+      <version>0.1.1</version>
     </dependency>
 </dependencies>
 
