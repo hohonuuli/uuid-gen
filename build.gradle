@@ -67,7 +67,9 @@ publishing {
     publications {
         BintrayPublication(MavenPublication) {
             from components.java
-            groupId 'org.mbari.bobd'
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'org.mbari.uuid'
             artifactId project.name
             version project.version
         }

@@ -47,7 +47,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * z: UTC timestamp (milliseconds since epoch)
  * </pre>
  *
- * Examples of counter sequenctially  generatied UUID:
+ * Examples of counter sequenctially  generated UUID:
  *
  * <pre>
  * f5166777-7a7f-bd53-7a50-013e4e2afc26
