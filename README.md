@@ -5,12 +5,12 @@ Simple API for generating various types of UUIDs.
 ## Table of Contents
 
 1. [Usage](#usage)
-    1. [Maven](#maven)
+    - [Maven](#maven)
 2. [UUID Types](#uuid-types)
-    1. [UUID 1](#uuid-1)
-    2. [UUID 4](#uuid-4)
-    3. [UUID 6](#uuid-6)
-    4. [UUID Counters](#uuid-sequence-and-uuid-counter)
+    - [UUID 1](#uuid-1)
+    - [UUID 4](#uuid-4)
+    - [UUID 6](#uuid-6)
+    - [UUID Counters](#uuid-sequence-and-uuid-counter)
 2. [SQL Server](#sql-server-_uniqueidentifier_)
 
 ## Usage
