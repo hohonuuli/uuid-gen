@@ -1,20 +1,52 @@
 # uuid-gen
 
-Convience API for generating various types of UUIDs that I use for my projects. To use just import `UUIDs` and call it's static methods:
+Simple API for generating various types of UUIDs. 
+
+## Table of Contents
+
+1. [Usage](#usage)
+    1. [Maven](#maven)
+2. [UUID Types](#uuid-types)
+    1. [UUID 1](#uuid-1)
+    2. [UUID 4](#uuid-4)
+    3. [UUID 6](#uuid-6)
+    4. [UUID Counters](#uuid-sequence-and-uuid-counter)
+2. [SQL Server](#sql-server-_uniqueidentifier_)
+
+## Usage
+
+To use just import `UUIDs` and call it's static methods:
 
 ```java
 import org.mbari.uuid.UUIDs;
 UUID uuid = UUIDs.uuid1();
 ```
 
-## Table of Contents
+### Maven
 
-1. [UUID Types](#uuid-types)
-    1. [UUID 1](#uuid-1)
-    2. [UUID 4](#uuid-4)
-    3. [UUID 6](#uuid-6)
-    4. [UUID Counters](#uuid-sequence-and-uuid-counter)
-2. [Maven](#maven)
+Here's the Maven xml needed to include it in your project.
+
+```xml
+<repositories>
+    <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>bintray-hohonuuli-maven</id>
+        <name>bintray</name>
+        <url>https://dl.bintray.com/hohonuuli/maven</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+     <groupId>org.mbari.uuid</groupId>
+      <artifactId>uuid-gen</artifactId>
+      <version>0.1.1</version>
+    </dependency>
+</dependencies>
+
+```
 
 ## UUID Types
 
@@ -66,7 +98,6 @@ Examples:
 1e919f03-5efe-63b1-bf67-be655249e714
 1e919f03-5efe-63b2-bf67-be655249e714
 ```
-
 
 ### UUID Sequence and UUID Counter
 
@@ -142,31 +173,6 @@ byte[]  macFragment = d.getMacFracment();
 Instant timestamp   = d.getTimestamp()
 char    version     = d.getVersion();
 ```
-
-## Maven
-
-```xml
-<repositories>
-    <repository>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-        <id>bintray-hohonuuli-maven</id>
-        <name>bintray</name>
-        <url>https://dl.bintray.com/hohonuuli/maven</url>
-    </repository>
-</repositories>
-
-<dependencies>
-    <dependency>
-     <groupId>org.mbari.uuid</groupId>
-      <artifactId>uuid-gen</artifactId>
-      <version>0.1.1</version>
-    </dependency>
-</dependencies>
-
-```
-
 
 ## SQL Server _uniqueidentifier_
 
