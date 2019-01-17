@@ -118,6 +118,7 @@ __Decomposing Counter and Sequence UUIDs__:
 If desired you can decompose these UUIDs into their components like so:
 
 ```java
+import java.time.Instant;
 import org.mbari.uuid.sequence.DecomposedUUID;
 
 //...
