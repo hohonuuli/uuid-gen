@@ -43,7 +43,7 @@ Here's the Maven xml needed to include it in your project.
     <dependency>
      <groupId>org.mbari.uuid</groupId>
       <artifactId>uuid-gen</artifactId>
-      <version>0.1.1</version>
+      <version>0.1.3</version>
     </dependency>
 </dependencies>
 
