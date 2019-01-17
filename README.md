@@ -102,7 +102,7 @@ Examples:
 
 ### COMB
 
-This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the weird sort order used by SQL Server for unique ids. The generated format is:
+This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the [weird sort order used by SQL Server](#sql-server-uniqueidentifier) for unique ids. The generated format is:
 
 ```
       rrrrrrrr-rrrr-4rrr-tttt-tttttttttttt
