@@ -1,10 +1,20 @@
 # uuid-gen
 
-Convience API for generating various types of UUIDs that I use for my projects. To use just import `UUIDs`.
+Convience API for generating various types of UUIDs that I use for my projects. To use just import `UUIDs` and call it's static methods:
 
 ```java
 import org.mbari.uuid.UUIDs;
+UUID uuid = UUIDs.uuid1();
 ```
+
+## Table of Contents
+
+1. [UUID Types](#uuid-types)
+    1. [UUID 1](#uuid-1)
+    2. [UUID 4](#uuid-4)
+    3. [UUID 6](#uuid-6)
+    4. [UUID Counters](#uuid-sequence-and-uuid-counter)
+2. [Maven](#maven)
 
 ## UUID Types
 
