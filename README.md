@@ -110,7 +110,8 @@ This is a UUID that combines random values for the most significant bits and a t
       
  r: random value
  4: version (type 4 is random)
- t: UTC timestamp (+counter). The byte order is inverted so the least varying byte is at position F and the most varying is at 8.
+ t: UTC timestamp (+counter). The byte order is inverted so the least varying 
+    byte is at position F and the most varying is at 8.
 
 ```
 
