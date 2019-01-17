@@ -95,4 +95,26 @@ public class UUIDs {
     public static UUID uuidSequence() {
         return TimeSequenceGenerator.nextUuid();
     }
+
+    /**
+     *
+     * @return A Timee-based UUID that sorts in SQL servers uniqueidentifier sort
+     *    order
+     */
+//    public static UUID uuidSequenceSQL() {
+//        final UUID uuid6 = uuid6();
+//        long msb = uuid6.getMostSignificantBits();
+//        long msb2 = ((msb >> 48) & 0x0000000000FFFFL) |
+//                ((msb << 16) & 0xFFFFFFFFFFFF0000L); //|
+////        long msb2 = ((msb & 0xFFFF00000000000L) >> 52) |
+////                ((msb & 0x0000FFFFFFFFFFFL) << 16); //|
+//                //((msb & 0x00000000000FFFFL));
+// //       long msb2 = ((msb << 24) & 0xFFFF000000000000L); //|
+////                ((msb >> 22) & 0x0000FFFFFFFFFFFFL)
+//        //long msb2 = ((msb << 12) & 0x0000FFFFFFFFFFFFL) |
+//          //      ((msb >> 24) & 0xFFFF000000000000L);
+//        return new UUID(uuid6.getLeastSignificantBits(), msb2);
+//        //return new UUID(msb2, uuid6.getLeastSignificantBits());
+//        //return new UUID(uuid6.getLeastSignificantBits(), uuid6.getMostSignificantBits());
+//    }
 }
