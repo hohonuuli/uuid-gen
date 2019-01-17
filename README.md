@@ -53,11 +53,12 @@ Here's the Maven xml needed to include it in your project.
 
 ### UUID 1
 
-[Based on date-time and MAC address](https://tools.ietf.org/html/rfc4122#section-4.2.1). This implementation uses [java-uuid-generator](https://github.com/cowtowncoder/java-uuid-generator)
-
 ```java
 UUID uuid1 = UUIDs.uuid1();
 ``` 
+
+[Based on date-time and MAC address](https://tools.ietf.org/html/rfc4122#section-4.2.1). This implementation uses [java-uuid-generator](https://github.com/cowtowncoder/java-uuid-generator)
+
 Examples:
 ```
 35df41db-19f0-11e9-bf67-be655249e714
@@ -68,11 +69,20 @@ Examples:
 
 ### UUID 4
 
-Random UUID. Same as `java.util.UUID.randomUuid();`
-
 ```java
 UUID uuid4 = UUIDs.uuid4();
 ```
+
+Random UUID. Same as `java.util.UUID.randomUuid();`
+
+```
+    rrrrrrrr-rrrr-4rrr-rrrr-rrrrrrrrrrrr
+      
+ r: random value
+ 4: version (type 4 is random)
+```
+
+
 
 Examples:
 
@@ -85,11 +95,13 @@ d9495e93-24ae-453b-818a-f52459f1cd69
 
 ### UUID 6
 
-Not an actual version, but an interesting proposal from <https://bradleypeabody.github.io/uuidv6/>. It has a nice feature in that it's a variant of UUID 1. So it's based on date-time and MAC address but also has a natural sort order. For example, if you convert it to a string it sorts by time correctly.
-
 ```java
 UUID uuid6 = UUIDs.uuid6();
 ```
+
+Not an actual version, but an interesting proposal from <https://bradleypeabody.github.io/uuidv6/>. It has a nice feature in that it's a variant of UUID 1. So it's based on date-time and MAC address but also has a natural sort order. For example, if you convert it to a string it sorts by time correctly.
+
+
 
 Examples:
 
@@ -102,11 +114,15 @@ Examples:
 
 ### COMB
 
+```java
+UUID comb = UUIDs.comb();
+```
+
 This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the [weird sort order used by SQL Server](#sql-server-uniqueidentifier) for unique ids. The generated format is:
 
 ```
-      rrrrrrrr-rrrr-4rrr-tt6t-tttttttttttt
-      0                  8              F
+     rrrrrrrr-rrrr-4rrr-tt6t-tttttttttttt
+     0                  8              F
       
  r: random value
  4: version (type 4 is random)
@@ -115,10 +131,6 @@ This is a UUID that combines random values for the most significant bits and a t
  6: I'm lazy. This is the version number from UUID4 which I'm using to generate
     the time. 
 
-```
-
-```java
-UUID comb = UUIDs.comb();
 ```
 
 Examples:
