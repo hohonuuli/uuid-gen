@@ -60,7 +60,7 @@ Examples:
 
 ### UUID Sequence and UUID Counter
 
-A locality-based UUID algorithmns created by [Groupon](https://github.com/groupon/locality-uuid.java). They both generated UUIDs in the following format:
+Locality-based UUID algorithmns created by [Groupon](https://github.com/groupon/locality-uuid.java). They generated UUIDs in the following format:
 
 ```java
    wwwwwwww-xxxx-byyy-yyyy-zzzzzzzzzzzz
