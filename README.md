@@ -219,7 +219,7 @@ char    version     = d.getVersion();
 
 ## SQL Server uniqueidentifier
 
- If you're working with SQL Server, be careful when using UUIDS as primary keys ... [if you need to do such a thing](https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega).  SQL Server has a very [odd sorting order](http://sqlblog.com/blogs/alberto_ferrari/archive/2007/08/31/how-are-guids-sorted-by-sql-server.aspx) which is:
+ If you're working with SQL Server, be careful when using UUIDS as primary keys ... [if you need to do such a thing](https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega).  SQL Server has a very [odd sorting order](http://sqlblog.com/blogs/alberto_ferrari/archive/2007/08/31/how-are-guids-sorted-by-sql-server.aspx) for the `UNIQUEIDENTIFIER` type which is:
 
 ```
     wwwwwwww-xxxx-byyy-yyyy-zzzzzzzzzzzz
