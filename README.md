@@ -16,7 +16,7 @@ Simple API for generating various types of UUIDs.
 
 ## Usage
 
-To use just import `UUIDs` and call it's static methods:
+To use, just import `UUIDs` and call its static methods:
 
 ```java
 import org.mbari.uuid.UUIDs;
@@ -57,7 +57,7 @@ Here's the Maven xml needed to include it in your project.
 UUID uuid1 = UUIDs.uuid1();
 ``` 
 
-[Based on date-time and MAC address](https://tools.ietf.org/html/rfc4122#section-4.2.1). This implementation uses [java-uuid-generator](https://github.com/cowtowncoder/java-uuid-generator)
+[Based on date-time and MAC address](https://tools.ietf.org/html/rfc4122#section-4.2.1). This implementation uses [java-uuid-generator](https://github.com/cowtowncoder/java-uuid-generator).
 
 Examples:
 ```
@@ -118,7 +118,7 @@ Examples:
 UUID comb = UUIDs.comb();
 ```
 
-This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the [weird sort order used by SQL Server](#sql-server-uniqueidentifier) for unique ids. The generated format is:
+This is a UUID that [combines random values for the most significant bits and a timestamp in the least significant bits](http://www.informit.com/articles/article.aspx?p=25862&seqNum=7). This was shown to give better insert performance for SQL Server as it satisfies the [weird sort order used by SQL Server](#sql-server-uniqueidentifier) for unique ids. The generated format is:
 
 ```
      rrrrrrrr-rrrr-4rrr-tt6t-tttttttttttt
