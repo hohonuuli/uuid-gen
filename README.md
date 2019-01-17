@@ -10,8 +10,9 @@ Simple API for generating various types of UUIDs.
     - [UUID 1](#uuid-1)
     - [UUID 4](#uuid-4)
     - [UUID 6](#uuid-6)
+    - [COMB](#comb)
     - [UUID Counters](#uuid-sequence-and-uuid-counter)
-2. [SQL Server](#sql-server-_uniqueidentifier_)
+2. [SQL Server](#sql-server-uniqueidentifier)
 
 ## Usage
 
@@ -99,6 +100,33 @@ Examples:
 1e919f03-5efe-63b2-bf67-be655249e714
 ```
 
+### COMB
+
+This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the weird sort order used by SQL Server for unique ids. The generated format is:
+
+```
+      rrrrrrrr-rrrr-4rrr-tttt-tttttttttttt
+      0                  8              F
+      
+ r: random value
+ 4: version (type 4 is random)
+ t: UTC timestamp (+counter). The byte order is inverted so the least varying byte is at position F and the most varying is at 8.
+
+```
+
+```java
+UUID comb = UUIDs.comb();
+```
+
+Examples:
+
+```
+f298fa80-6af8-43d4-5467-26fe52a8911e
+b9a7aafe-129a-466a-656e-28fe52a8911e
+c57df92f-41f6-4fcd-666e-28fe52a8911e
+b4d0c556-3afa-40ad-676e-28fe52a8911e
+```
+
 ### UUID Sequence and UUID Counter
 
 Locality-based UUID algorithmns created by [Groupon](https://github.com/groupon/locality-uuid.java).
@@ -174,9 +202,9 @@ Instant timestamp   = d.getTimestamp()
 char    version     = d.getVersion();
 ```
 
-## SQL Server _uniqueidentifier_
+## SQL Server uniqueidentifier
 
- If you're working with SQL Server, I need a good external UUID generator for using UUIDs as a primary key, [if you need to do such a thing](https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega).  SQL Server's has a very [odd sorting order](http://sqlblog.com/blogs/alberto_ferrari/archive/2007/08/31/how-are-guids-sorted-by-sql-server.aspx) which is:
+ If you're working with SQL Server, be careful when using UUIDS as primary keys ... [if you need to do such a thing](https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega).  SQL Server has a very [odd sorting order](http://sqlblog.com/blogs/alberto_ferrari/archive/2007/08/31/how-are-guids-sorted-by-sql-server.aspx) which is:
 
 ```
     wwwwwwww-xxxx-byyy-yyyy-zzzzzzzzzzzz
@@ -188,3 +216,11 @@ char    version     = d.getVersion();
 - __6..7__ are evaluated in left to right order, then
 - __8..9__ are evaluated in right to left order, then
 - __A..F__ are evaluated in right to left order and are the most important
+
+So ... the byte evaluation order for sorting is:
+
+```
+F E D C B A 9 8 6 7 4 5 0 1 2 3
+```
+
+The [COMB](#comb) UUID should satisfy this sort ordering.

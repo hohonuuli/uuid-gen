@@ -18,6 +18,8 @@ package org.mbari.uuid;
 import com.fasterxml.uuid.EthernetAddress;
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
+
+import java.time.Instant;
 import java.util.UUID;
 import org.mbari.uuid.sequence.CounterSequenceGenerator;
 import org.mbari.uuid.sequence.TimeSequenceGenerator;
@@ -96,25 +98,36 @@ public class UUIDs {
         return TimeSequenceGenerator.nextUuid();
     }
 
+
     /**
+     * COMBined UUID. See http://www.informit.com/articles/article.aspx?p=25862&seqNum=7
      *
-     * @return A Timee-based UUID that sorts in SQL servers uniqueidentifier sort
-     *    order
+     * This is a modified version of the COMB used n the article as we are using a higher
+     * resolution timestamp. All of the least significant bits represent timestamp.
+     * The timestamp bytes are ordered as:
+     *
+     * <pre>
+     * 0 1 2 3 4 5 6 7 8
+     * |               ` slowest changing
+     * ` fastest changing
+     * </pre>
+     *
+     * This should satisfy SQL servers insert order if you use a UUID as primary,
+     * clustered key.
+     * @return
      */
-//    public static UUID uuidSequenceSQL() {
-//        final UUID uuid6 = uuid6();
-//        long msb = uuid6.getMostSignificantBits();
-//        long msb2 = ((msb >> 48) & 0x0000000000FFFFL) |
-//                ((msb << 16) & 0xFFFFFFFFFFFF0000L); //|
-////        long msb2 = ((msb & 0xFFFF00000000000L) >> 52) |
-////                ((msb & 0x0000FFFFFFFFFFFL) << 16); //|
-//                //((msb & 0x00000000000FFFFL));
-// //       long msb2 = ((msb << 24) & 0xFFFF000000000000L); //|
-////                ((msb >> 22) & 0x0000FFFFFFFFFFFFL)
-//        //long msb2 = ((msb << 12) & 0x0000FFFFFFFFFFFFL) |
-//          //      ((msb >> 24) & 0xFFFF000000000000L);
-//        return new UUID(uuid6.getLeastSignificantBits(), msb2);
-//        //return new UUID(msb2, uuid6.getLeastSignificantBits());
-//        //return new UUID(uuid6.getLeastSignificantBits(), uuid6.getMostSignificantBits());
-//    }
+    public static UUID comb() {
+
+        // Generate time bits. Reverse byte order so that time is sorted
+        // using SQL servers weird sort order.
+        UUID uuid6 = uuid6();
+        long time = uuid6.getMostSignificantBits();
+        long emit = Long.reverseBytes(time);
+
+        // Generate random bits
+        UUID uuid4 = uuid4();
+        return new UUID(uuid4.getMostSignificantBits(), emit);
+
+    }
+
 }
