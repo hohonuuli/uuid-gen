@@ -105,13 +105,15 @@ Examples:
 This is a UUID that combines random values for the most significant bits and a timestamp in the least significant bits. This was shown to give better insert performance for SQL Server as it satisfies the [weird sort order used by SQL Server](#sql-server-uniqueidentifier) for unique ids. The generated format is:
 
 ```
-      rrrrrrrr-rrrr-4rrr-tttt-tttttttttttt
+      rrrrrrrr-rrrr-4rrr-tt6t-tttttttttttt
       0                  8              F
       
  r: random value
  4: version (type 4 is random)
  t: UTC timestamp (+counter). The byte order is inverted so the least varying 
     byte is at position F and the most varying is at 8.
+ 6: I'm lazy. This is the version number from UUID4 which I'm using to generate
+    the time. 
 
 ```
 
