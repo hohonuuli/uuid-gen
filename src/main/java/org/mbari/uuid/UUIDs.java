@@ -100,7 +100,7 @@ public class UUIDs {
 
 
     /**
-     * COMBined UUID. See http://www.informit.com/articles/article.aspx?p=25862&seqNum=7
+     * <a href="http://www.informit.com/articles/article.aspx?p=25862&seqNum=7">COMBined UUID</a>
      *
      * This is a modified version of the COMB used n the article as we are using a higher
      * resolution timestamp. All of the least significant bits represent timestamp.
