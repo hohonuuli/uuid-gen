@@ -60,7 +60,9 @@ Examples:
 
 ### UUID Sequence and UUID Counter
 
-Locality-based UUID algorithmns created by [Groupon](https://github.com/groupon/locality-uuid.java). They generated UUIDs in the following format:
+Locality-based UUID algorithmns created by [Groupon](https://github.com/groupon/locality-uuid.java).
+
+They generated UUIDs in the following format:
 
 ```java
    wwwwwwww-xxxx-byyy-yyyy-zzzzzzzzzzzz
@@ -154,3 +156,19 @@ char    version     = d.getVersion();
 </dependencies>
 
 ```
+
+
+## SQL Server _uniqueidentifier_
+
+ If you're working with SQL Server, I need a good external UUID generator for using UUIDs as a primary key, [if you need to do such a thing](https://stackoverflow.com/questions/11938044/what-are-the-best-practices-for-using-a-guid-as-a-primary-key-specifically-rega).  SQL Server's has a very [odd sorting order](http://sqlblog.com/blogs/alberto_ferrari/archive/2007/08/31/how-are-guids-sorted-by-sql-server.aspx) which is:
+
+```
+    wwwwwwww-xxxx-byyy-yyyy-zzzzzzzzzzzz
+    0 1 2 3  4 5  6 7  8 9  A B C D E F
+```
+
+- __0..3__ are evaluated in left to right order and are the less important, then
+- __4..5__ are evaluated in left to right order, then
+- __6..7__ are evaluated in left to right order, then
+- __8..9__ are evaluated in right to left order, then
+- __A..F__ are evaluated in right to left order and are the most important
