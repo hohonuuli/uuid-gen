@@ -113,6 +113,23 @@ d948feb7-f6ac-b249-e714-0168593ebb17
 25144cf8-f6ac-b249-e714-0168593ebb17
 ```
 
+__Decomposing Counter and Sequence UUIDs__:
+
+If desired you can decompose these UUIDs into their components like so:
+
+```java
+import org.mbari.uuid.sequence.DecomposedUUID;
+
+//...
+UUID uuidS = UUIDS.uuidSequence();
+DecomposedUUID d = new DecomposedUUID(uuidS);
+
+int     processId   = d.getProcessId();
+byte[]  macFragment = d.getMacFracment();
+Instant timestamp   = d.getTimestamp()
+char    version     = d.getVersion();
+```
+
 ## Maven
 
 ```xml
