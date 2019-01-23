@@ -232,7 +232,7 @@ char    version     = d.getVersion();
 - __8..9__ are evaluated in right to left order, then
 - __A..F__ are evaluated in right to left order and are the most important
 
-So ... the byte evaluation, in order of importance, for sorting is:
+So ... the byte evaluation order for sorting, from most signifigant byte to least is:
 
 ```
 F E D C B A 9 8 6 7 4 5 0 1 2 3
