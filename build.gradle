@@ -21,6 +21,9 @@ plugins {
     id 'maven-publish'
 
 //    id "com.github.hierynomus.license" version "0.15.0"
+    
+    // Prettyify the test output -> https://github.com/radarsh/gradle-test-logger-plugin
+    id 'com.adarshr.test-logger' version '1.6.0'
 
 }
 
@@ -136,4 +139,18 @@ bintray {
         }
     }
     publications = ['BintrayPublication']
+}
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
+    slowThreshold 2000
+    showSummary true
+    showPassed true
+    showSkipped true
+    showFailed true
+    showStandardStreams false
+    showPassedStandardStreams true
+    showSkippedStandardStreams true
+    showFailedStandardStreams true
 }
