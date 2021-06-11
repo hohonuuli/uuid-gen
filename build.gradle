@@ -16,6 +16,11 @@ plugins {
 
     id 'maven-publish'
 
+//    id "com.github.hierynomus.license" version "0.15.0"
+    
+    // Prettyify the test output -> https://github.com/radarsh/gradle-test-logger-plugin
+    id 'com.adarshr.test-logger' version '1.6.0'
+
 }
 
 version = "0.1.4"
@@ -127,17 +132,17 @@ javadoc {
     }
 }
 
-// bintray {
-//     user = System.getenv('BINTRAY_USER')
-//     key = System.getenv('BINTRAY_KEY')
-//     pkg {
-//         repo = 'maven'
-//         name = project.name
-//         licenses = ['Apache-2.0']
-//         vcsUrl = 'https://github.com/mbari-media-management/bobd-watermark'
-//         version {
-//             name = project.version
-//         }
-//     }
-//     publications = ['BintrayPublication']
-// }
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
+    slowThreshold 2000
+    showSummary true
+    showPassed true
+    showSkipped true
+    showFailed true
+    showStandardStreams false
+    showPassedStandardStreams true
+    showSkippedStandardStreams true
+    showFailedStandardStreams true
+}
