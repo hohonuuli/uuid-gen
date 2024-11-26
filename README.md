@@ -28,24 +28,13 @@ UUID uuid = UUIDs.uuid1();
 Here's the Maven xml needed to include it in your project.
 
 ```xml
-<repositories>
-    <repository>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-        <id>bintray-hohonuuli-maven</id>
-        <name>bintray</name>
-        <url>https://dl.bintray.com/hohonuuli/maven</url>
-    </repository>
-</repositories>
-
-<dependencies>
+  <dependencies>
     <dependency>
      <groupId>org.mbari.uuid</groupId>
       <artifactId>uuid-gen</artifactId>
-      <version>0.1.3</version>
+      <version>0.1.4</version>
     </dependency>
-</dependencies>
+  </dependencies>
 
 ```
 
