@@ -19,7 +19,6 @@ import com.fasterxml.uuid.EthernetAddress;
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
 
-import java.time.Instant;
 import java.util.UUID;
 import org.mbari.uuid.sequence.CounterSequenceGenerator;
 import org.mbari.uuid.sequence.TimeSequenceGenerator;

@@ -6,7 +6,7 @@
 
   <groupId>org.mbari.uuid</groupId>
   <artifactId>uuid-gen</artifactId>
-  <version>0.1.4</version>
+  <version>0.1.5-SNAPSHOT</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A UUID Generator</description>
@@ -36,7 +36,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
-    <java.uuid.version>3.1.5</java.uuid.version>
+    <java.uuid.version>5.1.0</java.uuid.version>
   </properties>
 
   <dependencyManagement>
@@ -209,10 +209,4 @@
     </pluginManagement>
   </build>
 
-      <!-- <distributionManagement>
-        <repository>
-            <id>central</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement> -->
 </project>
